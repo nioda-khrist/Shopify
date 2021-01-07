@@ -5,8 +5,11 @@ import firebase from './config/fbConfig';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ProtectedRoute, UserLogin } from './components';
+import { ProtectedRoute, Authentication } from './components';
 import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
+
+import Home from './pages/Home';
+import Settings from './pages/Settings';
 
 const rrfProps = {
   firebase,
@@ -23,10 +26,12 @@ const App = () => {
       <ReactReduxFirebaseProvider {...rrfProps}>
         <ThemeProvider theme={theme}>
           <main>
+            <Authentication />
             <CssBaseline />
             <Router>
               <Switch>
-                <Route exact path='/' component={UserLogin} />
+                <Route exact path='/' component={Home} />
+                <ProtectedRoute path='/settings' component={Settings} />
               </Switch>
             </Router>
           </main>
