@@ -16,6 +16,8 @@ import {
 const initialValues = {
   loading: false,
   error: '',
+  signupError: '',
+  signinError: '',
 };
 
 const userReducer = (state = initialValues, action) => {
@@ -30,12 +32,16 @@ const userReducer = (state = initialValues, action) => {
         ...state,
         loading: false,
         error: action.payload,
+        signupError: '',
+        signinError: '',
       };
     case EDIT_USER_SUCCESS:
       return {
         ...state,
         loading: false,
         error: '',
+        signupError: '',
+        signinError: '',
       };
     case USER_LOGOUT_LOADING:
       return {
@@ -47,12 +53,16 @@ const userReducer = (state = initialValues, action) => {
         ...state,
         loading: false,
         error: '',
+        signupError: '',
+        signinError: '',
       };
     case USER_LOGOUT_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload,
+        signupError: '',
+        signinError: '',
       };
     case USER_LOGIN_LOADING:
       return {
@@ -64,12 +74,16 @@ const userReducer = (state = initialValues, action) => {
         ...state,
         loading: false,
         error: '',
+        signupError: '',
+        signinError: '',
       };
     case USER_LOGIN_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: '',
+        signupError: '',
+        signinError: action.payload,
       };
     case USER_SIGNUP_LOADING:
       return {
@@ -81,12 +95,16 @@ const userReducer = (state = initialValues, action) => {
         ...state,
         loading: false,
         error: '',
+        signupError: '',
+        signinError: '',
       };
     case USER_SIGNUP_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: '',
+        signupError: action.payload,
+        signinError: '',
       };
     default:
       return state;

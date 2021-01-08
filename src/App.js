@@ -18,7 +18,14 @@ const rrfProps = {
   createFirestoreInstance,
 };
 
-const theme = createMuiTheme({});
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#3bad96',
+      contrastText: '#fff',
+    },
+  },
+});
 
 const App = () => {
   return (

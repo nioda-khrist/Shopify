@@ -1,17 +1,43 @@
 import React from 'react';
 import { UserLogin, UserData, UserSignUp } from '../components';
 import { connect } from 'react-redux';
+import { Container, Grid, Typography } from '@material-ui/core';
+import { homeStyles } from './styles';
 
 const Home = ({ isLogged }) => {
-  return !isLogged ? (
-    <div>
-      <UserData />
-    </div>
-  ) : (
-    <div>
-      <UserSignUp />
-      <UserLogin />
-    </div>
+  return !isLogged ? <UserData /> : <NoUser />;
+};
+
+const NoUser = () => {
+  const classes = homeStyles();
+  return (
+    <Container fixed component='section'>
+      <Grid container justify='center' className={classes.root}>
+        <Grid item sm={3} className={classes.leftContainer}>
+          <div>
+            <Typography variant='h4' component='h2' gutterBottom>
+              Welcome Back!
+            </Typography>
+            <Typography variant='subtitle1' component='p' gutterBottom>
+              No Account? Sign Up now and start your journey with us
+            </Typography>
+            <UserSignUp />
+          </div>
+        </Grid>
+        <Grid item sm={6} className={classes.rightContainer}>
+          <div>
+            <Typography variant='h4' component='h1' gutterBottom>
+              Sign In
+            </Typography>
+            <Typography variant='body2' component='p' gutterBottom>
+              Class aptent taciti sociosqu ad litora torquent per conubia
+              nostra, per inceptos himenaeos.
+            </Typography>
+            <UserLogin />
+          </div>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

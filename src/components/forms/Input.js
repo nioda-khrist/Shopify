@@ -14,8 +14,8 @@ const Input = (props) => {
         name={name}
         {...rest}
         id={name}
-        size='small'
         margin='dense'
+        size='small'
       />
       <ErrorMessage name={name} component={TextError} />
     </div>

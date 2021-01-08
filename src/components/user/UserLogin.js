@@ -1,12 +1,18 @@
-import { Button } from '@material-ui/core';
+import {
+  Backdrop,
+  Button,
+  CircularProgress,
+  Typography,
+} from '@material-ui/core';
 import { Form, Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 import FormikControl from '../forms/FormikControl';
 import { connect } from 'react-redux';
 import { userLogin } from '../../redux';
+import { SignInStyle } from './styles';
 
-const UserLogin = ({ userLogin }) => {
+const UserLogin = ({ userLogin, loading, error }) => {
   const initialValues = {
     email: '',
     password: '',
@@ -17,9 +23,13 @@ const UserLogin = ({ userLogin }) => {
     password: Yup.string().required('Required'),
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitProps) => {
+    onSubmitProps.setSubmitting(false);
+    onSubmitProps.resetForm();
     userLogin(values);
   };
+
+  const classes = SignInStyle();
 
   return (
     <div>
@@ -47,9 +57,20 @@ const UserLogin = ({ userLogin }) => {
                 onChange={formik.handleChange}
                 value={formik.values.password}
               />
-              <Button type='submit' variant='contained' color='primary'>
-                Login
+              <Typography variant='subtitle2' className={classes.error}>
+                {error}
+              </Typography>
+              <Button
+                type='submit'
+                variant='contained'
+                color='primary'
+                className={classes.btn}
+              >
+                SIGN IN
               </Button>
+              <Backdrop className={classes.backdrop} open={loading}>
+                <CircularProgress color='inherit' />
+              </Backdrop>
             </Form>
           );
         }}
@@ -58,10 +79,17 @@ const UserLogin = ({ userLogin }) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    loading: state.user.loading,
+    error: state.user.signinError,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     userLogin: (data) => dispatch(userLogin(data)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

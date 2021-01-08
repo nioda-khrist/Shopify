@@ -1,9 +1,12 @@
 import {
+  Backdrop,
   Button,
+  CircularProgress,
   Dialog,
-  DialogActions,
   DialogContent,
+  DialogContentText,
   DialogTitle,
+  Typography,
 } from '@material-ui/core';
 import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
@@ -11,8 +14,9 @@ import FormikControl from '../forms/FormikControl';
 import * as Yup from 'yup';
 import { userSignup } from '../../redux';
 import { connect } from 'react-redux';
+import { SignUpStyle } from './styles';
 
-const UserSignUp = ({ userSignup }) => {
+const UserSignUp = ({ userSignup, loading, error }) => {
   const [popUp, setPopUp] = useState(false);
   const ShowPopup = () => {
     setPopUp((prevPopUp) => !prevPopUp);
@@ -36,14 +40,25 @@ const UserSignUp = ({ userSignup }) => {
     userSignup(values);
   };
 
+  const classes = SignUpStyle();
+
   return (
     <React.Fragment>
-      <Button variant='text' color='primary' onClick={ShowPopup}>
-        Need an Account?
+      <Button
+        variant='text'
+        onClick={ShowPopup}
+        className={classes.btn}
+        fullWidth
+      >
+        SIGN UP
       </Button>
-      <Dialog open={popUp} onClose={ShowPopup}>
-        <DialogTitle id='form-dialog-title'>Sign Up</DialogTitle>
-        <DialogContent>
+      <Dialog open={popUp} onClose={ShowPopup} maxWidth='sm' fullWidth>
+        <DialogTitle className={classes.title}>Sign Up</DialogTitle>
+        <DialogContent className={classes.content}>
+          <DialogContentText>
+            Etiam posuere urna ac dictum efficitur. Phasellus egestas tellus
+            arcu, pretium porta orci ultricies sed.
+          </DialogContentText>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -51,7 +66,7 @@ const UserSignUp = ({ userSignup }) => {
           >
             {(formik) => {
               return (
-                <Form>
+                <Form className={classes.form}>
                   <FormikControl
                     control='input'
                     type='email'
@@ -76,25 +91,39 @@ const UserSignUp = ({ userSignup }) => {
                     onChange={formik.handleChange}
                     value={formik.values.confirmPassword}
                   />
-                  <Button
-                    onClick={ShowPopup}
-                    color='primary'
-                    variant='outlined'
-                  >
-                    Cancel
-                  </Button>
-                  <Button type='submit' color='primary' variant='contained'>
-                    Register
-                  </Button>
+                  <Typography variant='subtitle2' className={classes.error}>
+                    {error}
+                  </Typography>
+                  <div className={classes.btnContainer}>
+                    <Button
+                      onClick={ShowPopup}
+                      color='primary'
+                      variant='outlined'
+                    >
+                      Cancel
+                    </Button>
+                    <Button type='submit' color='primary' variant='contained'>
+                      Register
+                    </Button>
+                  </div>
+                  <Backdrop className={classes.backdrop} open={loading}>
+                    <CircularProgress color='inherit' />
+                  </Backdrop>
                 </Form>
               );
             }}
           </Formik>
         </DialogContent>
-        <DialogActions></DialogActions>
       </Dialog>
     </React.Fragment>
   );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    loading: state.user.loading,
+    error: state.user.signupError,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -103,4 +132,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(UserSignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(UserSignUp);
