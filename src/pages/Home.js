@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserLogin, UserData } from '../components';
+import { UserLogin, UserData, UserSignUp } from '../components';
 import { connect } from 'react-redux';
 
 const Home = ({ isLogged }) => {
@@ -9,6 +9,7 @@ const Home = ({ isLogged }) => {
     </div>
   ) : (
     <div>
+      <UserSignUp />
       <UserLogin />
     </div>
   );

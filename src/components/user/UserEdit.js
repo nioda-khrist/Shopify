@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 
 const UserEdit = ({ displayName, photoURL, email, editUser }) => {
   const initialValues = {
-    photoURL: photoURL,
-    displayName: displayName,
-    email: email,
+    photoURL: photoURL ?? '',
+    displayName: displayName ?? '',
+    email: email ?? '',
   };
 
   const validationSchema = Yup.object({

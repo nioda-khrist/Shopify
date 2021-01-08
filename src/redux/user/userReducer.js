@@ -8,6 +8,9 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_LOADING,
   USER_LOGIN_FAILURE,
+  USER_SIGNUP_SUCCESS,
+  USER_SIGNUP_FAILURE,
+  USER_SIGNUP_LOADING,
 } from './userTypes';
 
 const initialValues = {
@@ -63,6 +66,23 @@ const userReducer = (state = initialValues, action) => {
         error: '',
       };
     case USER_LOGIN_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case USER_SIGNUP_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case USER_SIGNUP_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: '',
+      };
+    case USER_SIGNUP_FAILURE:
       return {
         ...state,
         loading: false,

@@ -8,6 +8,9 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_LOADING,
   USER_LOGIN_FAILURE,
+  USER_SIGNUP_SUCCESS,
+  USER_SIGNUP_FAILURE,
+  USER_SIGNUP_LOADING,
 } from './userTypes';
 
 export const editUserLoading = () => {
@@ -115,6 +118,41 @@ export const userLogin = (data) => {
       })
       .catch((error) => {
         dispatch(userLoginFailure('Invalid Email or Password'));
+      });
+  };
+};
+
+export const userSignupLoading = () => {
+  return {
+    type: USER_SIGNUP_LOADING,
+  };
+};
+
+export const userSignupSuccess = () => {
+  return {
+    type: USER_SIGNUP_SUCCESS,
+  };
+};
+
+export const userSignupFailure = (error) => {
+  return {
+    type: USER_SIGNUP_FAILURE,
+    payload: error,
+  };
+};
+
+export const userSignup = (data) => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firestore = getFirebase();
+    dispatch(userSignupLoading());
+    firestore
+      .auth()
+      .createUserWithEmailAndPassword(data.email, data.password)
+      .then(() => {
+        dispatch(userSignupSuccess());
+      })
+      .catch((error) => {
+        dispatch(userSignupFailure(error.message));
       });
   };
 };
