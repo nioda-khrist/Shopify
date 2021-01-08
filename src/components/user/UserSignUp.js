@@ -54,7 +54,7 @@ const UserSignUp = ({ userSignup, loading, error }) => {
       </Button>
       <Dialog open={popUp} onClose={ShowPopup} maxWidth='sm' fullWidth>
         <DialogTitle className={classes.title}>Sign Up</DialogTitle>
-        <DialogContent className={classes.content}>
+        <DialogContent classes={{ root: classes.content }}>
           <DialogContentText>
             Etiam posuere urna ac dictum efficitur. Phasellus egestas tellus
             arcu, pretium porta orci ultricies sed.
