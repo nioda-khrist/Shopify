@@ -15,7 +15,8 @@ import {
 
 const initialValues = {
   loading: false,
-  error: '',
+  updateSuccess: false,
+  updateError: '',
   signupError: '',
   signinError: '',
 };
@@ -34,6 +35,7 @@ const userReducer = (state = initialValues, action) => {
         error: action.payload,
         signupError: '',
         signinError: '',
+        updateSuccess: false,
       };
     case EDIT_USER_SUCCESS:
       return {
@@ -42,6 +44,7 @@ const userReducer = (state = initialValues, action) => {
         error: '',
         signupError: '',
         signinError: '',
+        updateSuccess: true,
       };
     case USER_LOGOUT_LOADING:
       return {
@@ -55,6 +58,7 @@ const userReducer = (state = initialValues, action) => {
         error: '',
         signupError: '',
         signinError: '',
+        updateSuccess: false,
       };
     case USER_LOGOUT_FAILURE:
       return {
@@ -63,6 +67,7 @@ const userReducer = (state = initialValues, action) => {
         error: action.payload,
         signupError: '',
         signinError: '',
+        updateSuccess: false,
       };
     case USER_LOGIN_LOADING:
       return {
@@ -76,6 +81,7 @@ const userReducer = (state = initialValues, action) => {
         error: '',
         signupError: '',
         signinError: '',
+        updateSuccess: false,
       };
     case USER_LOGIN_FAILURE:
       return {
@@ -84,6 +90,7 @@ const userReducer = (state = initialValues, action) => {
         error: '',
         signupError: '',
         signinError: action.payload,
+        updateSuccess: false,
       };
     case USER_SIGNUP_LOADING:
       return {
@@ -97,6 +104,7 @@ const userReducer = (state = initialValues, action) => {
         error: '',
         signupError: '',
         signinError: '',
+        updateSuccess: false,
       };
     case USER_SIGNUP_FAILURE:
       return {
@@ -105,6 +113,7 @@ const userReducer = (state = initialValues, action) => {
         error: '',
         signupError: action.payload,
         signinError: '',
+        updateSuccess: false,
       };
     default:
       return state;

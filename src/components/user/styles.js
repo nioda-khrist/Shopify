@@ -57,3 +57,48 @@ export const SignInStyle = makeStyles((theme) => ({
     color: theme.palette.error.main,
   },
 }));
+
+export const userStyle = makeStyles((theme) => ({
+  root: {
+    marginTop: '-75px',
+    textAlign: 'center',
+  },
+  media: {
+    maxWidth: '150px',
+    height: '150px',
+    objectFit: 'cover',
+  },
+  data: {
+    '& span': {
+      fontWeight: '500',
+    },
+  },
+  btnContainer: {
+    marginTop: theme.spacing(2),
+    '& button': {
+      marginLeft: '10px',
+      marginRight: '10px',
+    },
+  },
+}));
+
+export const editStyles = makeStyles((theme) => ({
+  btnContainer: {
+    marginTop: theme.spacing(2),
+    '& button': {
+      marginLeft: '10px',
+      marginRight: '10px',
+    },
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+  success: {
+    color: theme.palette.success.main,
+    marginTop: theme.spacing(0.5),
+  },
+  error: {
+    color: theme.palette.error.main,
+  },
+}));

@@ -1,6 +1,14 @@
 import { makeStyles } from '@material-ui/core';
 
-export const homeStyles = makeStyles((theme) => ({
+export const userStyles = makeStyles((theme) => ({
+  userHeader: {
+    width: '100%',
+    height: '200px',
+    backgroundColor: '#3aaf9f',
+  },
+}));
+
+export const signinStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(5),
     height: '500px',
@@ -43,5 +51,16 @@ export const homeStyles = makeStyles((theme) => ({
     '& p': {
       fontWeight: '300',
     },
+  },
+}));
+
+export const settingStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: theme.spacing(5),
+    textAlign: 'center',
+  },
+  title: {
+    color: '#3bad96',
+    fontWeight: '500',
   },
 }));

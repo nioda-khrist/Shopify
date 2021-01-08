@@ -2,14 +2,30 @@ import React from 'react';
 import { UserLogin, UserData, UserSignUp } from '../components';
 import { connect } from 'react-redux';
 import { Container, Grid, Typography } from '@material-ui/core';
-import { homeStyles } from './styles';
+import { signinStyles, userStyles } from './styles';
 
 const Home = ({ isLogged }) => {
-  return !isLogged ? <UserData /> : <NoUser />;
+  return !isLogged ? <HaveUser /> : <NoUser />;
+};
+
+const HaveUser = () => {
+  const classes = userStyles();
+  return (
+    <React.Fragment>
+      <div className={classes.userHeader}></div>
+      <Container fixed component='section'>
+        <Grid container justify='center'>
+          <Grid item sm={6}>
+            <UserData />
+          </Grid>
+        </Grid>
+      </Container>
+    </React.Fragment>
+  );
 };
 
 const NoUser = () => {
-  const classes = homeStyles();
+  const classes = signinStyles();
   return (
     <Container fixed component='section'>
       <Grid container justify='center' className={classes.root}>

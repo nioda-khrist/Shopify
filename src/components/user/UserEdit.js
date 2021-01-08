@@ -1,4 +1,9 @@
-import { Button } from '@material-ui/core';
+import {
+  Backdrop,
+  Button,
+  CircularProgress,
+  Typography,
+} from '@material-ui/core';
 import { Form, Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
@@ -6,8 +11,17 @@ import FormikControl from '../forms/FormikControl';
 import { connect } from 'react-redux';
 import { editUser } from '../../redux';
 import { Link } from 'react-router-dom';
+import { editStyles } from './styles';
 
-const UserEdit = ({ displayName, photoURL, email, editUser }) => {
+const UserEdit = ({
+  displayName,
+  photoURL,
+  email,
+  editUser,
+  loading,
+  error,
+  updateSuccess,
+}) => {
   const initialValues = {
     photoURL: photoURL ?? '',
     displayName: displayName ?? '',
@@ -24,6 +38,8 @@ const UserEdit = ({ displayName, photoURL, email, editUser }) => {
     onSubmitProps.setSubmitting(false);
     editUser(values);
   };
+
+  const classes = editStyles();
 
   return (
     <Formik
@@ -56,12 +72,32 @@ const UserEdit = ({ displayName, photoURL, email, editUser }) => {
               onChange={formik.handleChange}
               value={formik.values.email}
             />
-            <Button type='submit' variant='contained' color='primary'>
-              Update Profile
-            </Button>
-            <Button to='/' component={Link} variant='outlined' color='primary'>
-              Back To Profile
-            </Button>
+            {updateSuccess && (
+              <Typography variant='subtitle2' className={classes.success}>
+                Update Successful
+              </Typography>
+            )}
+            {error && (
+              <Typography variant='subtitle2' className={classes.error}>
+                {error}
+              </Typography>
+            )}
+            <div className={classes.btnContainer}>
+              <Button type='submit' variant='contained' color='primary'>
+                Update Profile
+              </Button>
+              <Button
+                to='/'
+                component={Link}
+                variant='outlined'
+                color='primary'
+              >
+                Back To Profile
+              </Button>
+            </div>
+            <Backdrop className={classes.backdrop} open={loading}>
+              <CircularProgress color='inherit' />
+            </Backdrop>
           </Form>
         );
       }}
@@ -80,6 +116,9 @@ const mapStateToProps = (state) => {
     displayName: state.firebase.auth.displayName,
     photoURL: state.firebase.auth.photoURL,
     email: state.firebase.auth.email,
+    loading: state.user.loading,
+    error: state.user.updateError,
+    updateSuccess: state.user.updateSuccess,
   };
 };
 

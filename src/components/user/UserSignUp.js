@@ -91,9 +91,11 @@ const UserSignUp = ({ userSignup, loading, error }) => {
                     onChange={formik.handleChange}
                     value={formik.values.confirmPassword}
                   />
-                  <Typography variant='subtitle2' className={classes.error}>
-                    {error}
-                  </Typography>
+                  {error && (
+                    <Typography variant='subtitle2' className={classes.error}>
+                      {error}
+                    </Typography>
+                  )}
                   <div className={classes.btnContainer}>
                     <Button
                       onClick={ShowPopup}

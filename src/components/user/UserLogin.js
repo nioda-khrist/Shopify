@@ -57,9 +57,11 @@ const UserLogin = ({ userLogin, loading, error }) => {
                 onChange={formik.handleChange}
                 value={formik.values.password}
               />
-              <Typography variant='subtitle2' className={classes.error}>
-                {error}
-              </Typography>
+              {error && (
+                <Typography variant='subtitle2' className={classes.error}>
+                  {error}
+                </Typography>
+              )}
               <Button
                 type='submit'
                 variant='contained'
