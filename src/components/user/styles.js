@@ -17,8 +17,8 @@ export const SignUpStyle = makeStyles((theme) => ({
     },
   },
   content: {
-    padding: theme.spacing(3),
-    paddingTop: '0px',
+    padding: `${theme.spacing(3)}px !important`,
+    paddingTop: '0px !important',
     textAlign: 'center',
   },
   form: {
