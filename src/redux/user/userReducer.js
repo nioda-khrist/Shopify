@@ -2,6 +2,7 @@ import {
   EDIT_USER_SUCCESS,
   EDIT_USER_LOADING,
   EDIT_USER_FAILURE,
+  EDIT_USER_CLEANUP,
   USER_LOGOUT_SUCCESS,
   USER_LOGOUT_LOADING,
   USER_LOGOUT_FAILURE,
@@ -32,7 +33,7 @@ const userReducer = (state = initialValues, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        updateError: action.payload,
         signupError: '',
         signinError: '',
         updateSuccess: false,
@@ -41,10 +42,19 @@ const userReducer = (state = initialValues, action) => {
       return {
         ...state,
         loading: false,
-        error: '',
+        updateError: '',
         signupError: '',
         signinError: '',
         updateSuccess: true,
+      };
+    case EDIT_USER_CLEANUP:
+      return {
+        ...state,
+        loading: false,
+        updateError: '',
+        signupError: '',
+        signinError: '',
+        updateSuccess: false,
       };
     case USER_LOGOUT_LOADING:
       return {
@@ -55,7 +65,7 @@ const userReducer = (state = initialValues, action) => {
       return {
         ...state,
         loading: false,
-        error: '',
+        updateError: '',
         signupError: '',
         signinError: '',
         updateSuccess: false,
@@ -64,7 +74,7 @@ const userReducer = (state = initialValues, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        updateError: action.payload,
         signupError: '',
         signinError: '',
         updateSuccess: false,
@@ -78,7 +88,7 @@ const userReducer = (state = initialValues, action) => {
       return {
         ...state,
         loading: false,
-        error: '',
+        updateError: '',
         signupError: '',
         signinError: '',
         updateSuccess: false,
@@ -87,7 +97,7 @@ const userReducer = (state = initialValues, action) => {
       return {
         ...state,
         loading: false,
-        error: '',
+        updateError: '',
         signupError: '',
         signinError: action.payload,
         updateSuccess: false,
@@ -101,7 +111,7 @@ const userReducer = (state = initialValues, action) => {
       return {
         ...state,
         loading: false,
-        error: '',
+        updateError: '',
         signupError: '',
         signinError: '',
         updateSuccess: false,
@@ -110,7 +120,7 @@ const userReducer = (state = initialValues, action) => {
       return {
         ...state,
         loading: false,
-        error: '',
+        updateError: '',
         signupError: action.payload,
         signinError: '',
         updateSuccess: false,

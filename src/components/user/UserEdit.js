@@ -5,11 +5,11 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Form, Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Yup from 'yup';
 import FormikControl from '../forms/FormikControl';
 import { connect } from 'react-redux';
-import { editUser } from '../../redux';
+import { editUser, userCleanUp } from '../../redux';
 import { Link } from 'react-router-dom';
 import { editStyles } from './styles';
 
@@ -21,6 +21,7 @@ const UserEdit = ({
   loading,
   error,
   updateSuccess,
+  userCleanUp,
 }) => {
   const initialValues = {
     photoURL: photoURL ?? '',
@@ -40,6 +41,14 @@ const UserEdit = ({
   };
 
   const classes = editStyles();
+
+  useEffect(() => {
+    return () => {
+      if (updateSuccess) {
+        userCleanUp();
+      }
+    };
+  }, [updateSuccess, userCleanUp]);
 
   return (
     <Formik
@@ -108,6 +117,7 @@ const UserEdit = ({
 const mapDispatchToProps = (dispatch) => {
   return {
     editUser: (data) => dispatch(editUser(data)),
+    userCleanUp: () => dispatch(userCleanUp()),
   };
 };
 

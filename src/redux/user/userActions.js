@@ -2,6 +2,7 @@ import {
   EDIT_USER_SUCCESS,
   EDIT_USER_LOADING,
   EDIT_USER_FAILURE,
+  EDIT_USER_CLEANUP,
   USER_LOGOUT_SUCCESS,
   USER_LOGOUT_LOADING,
   USER_LOGOUT_FAILURE,
@@ -154,5 +155,17 @@ export const userSignup = (data) => {
       .catch((error) => {
         dispatch(userSignupFailure(error.message));
       });
+  };
+};
+
+export const editUserCleanUp = () => {
+  return {
+    type: EDIT_USER_CLEANUP,
+  };
+};
+
+export const userCleanUp = () => {
+  return (dispatch) => {
+    dispatch(editUserCleanUp());
   };
 };
