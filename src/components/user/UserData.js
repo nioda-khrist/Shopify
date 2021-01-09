@@ -9,7 +9,11 @@ const UserData = ({ userLogout, displayName, photoURL, email }) => {
   const classes = userStyle();
   return (
     <div className={classes.root}>
-      <img src={photoURL} alt='User Profile' className={classes.media} />
+      <img
+        src={photoURL ? photoURL : 'https://via.placeholder.com/150x150'}
+        alt='User Profile'
+        className={classes.media}
+      />
       <Typography variant='h6' component='h2' gutterBottom>
         {displayName}
       </Typography>

@@ -46,6 +46,7 @@ export const editUser = (data) => {
       })
       .then(() => {
         dispatch(editUserSuccess());
+        /* generate new token to update after https://stackoverflow.com/questions/61937587/how-to-get-valid-token-from-react-firebase-f%C3%BCr-nodesjs-server-verification */
       })
       .catch((error) => {
         dispatch(editUserFailure(error.message));
