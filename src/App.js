@@ -5,7 +5,7 @@ import firebase from './config/fbConfig';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ProtectedRoute,404 } from './components';
+import { ProtectedRoute, Unauthorized } from './components';
 import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
 
 import Home from './pages/Home';
@@ -40,7 +40,7 @@ const App = () => {
                 <Route exact path='/' component={Home} />
                 <ProtectedRoute path='/settings' component={Settings} />
                 <Route path='/products' component={Products} />
-                <Route path='*' component={404} />
+                <Route path='*' component={Unauthorized} />
               </Switch>
             </Router>
           </main>
