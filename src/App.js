@@ -11,14 +11,7 @@ import Products from './pages/Products';
 import Single from './pages/Single';
 import Cart from './pages/Cart';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#3bad96',
-      contrastText: '#fff',
-    },
-  },
-});
+const theme = createMuiTheme({});
 
 const App = (props) => {
   return (
