@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-
-const Products = () => {
-  return <div>roducts</div>;
-=======
 import { Container } from '@material-ui/core';
 import React from 'react';
 import { Product, PageTitle } from '../components';
@@ -19,7 +13,6 @@ const Products = () => {
       </Container>
     </React.Fragment>
   );
->>>>>>> temporary
 };
 
 export default Products;

@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-
-const Unauthorized = () => {
-  return <div>ERROR 404 NO PAGE FOUND</div>;
-=======
 import { Button, Container, Typography } from '@material-ui/core';
 import React from 'react';
 import { unauthorizeStyles } from './styles';
@@ -31,7 +25,6 @@ const Unauthorized = () => {
       </div>
     </Container>
   );
->>>>>>> temporary
 };
 
 export default Unauthorized;

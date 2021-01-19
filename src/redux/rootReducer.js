@@ -1,13 +1,4 @@
 import { combineReducers } from 'redux';
-<<<<<<< HEAD
-import { firestoreReducer } from 'redux-firestore';
-import userReducer from './user/userReducer';
-
-const rootReducer = combineReducers({
-  firebase: firebaseReducer,
-  firestore: firestoreReducer,
-  user: userReducer,
-=======
 import productReducer from './product/productReducer';
 import singleProductReducer from './singleProduct/singleProductReducer';
 import { addCartReducer } from './cart/cartReducer';
@@ -18,7 +9,6 @@ const rootReducer = combineReducers({
   singleProduct: singleProductReducer,
   addCart: addCartReducer,
   alert: alertReducer,
->>>>>>> temporary
 });
 
 export default rootReducer;
