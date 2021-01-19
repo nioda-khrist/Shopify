@@ -7,7 +7,7 @@ const PageTitle = ({ title }) => {
 
   return (
     <Box className={classes.root} py={5}>
-      <Container fixed>
+      <Container maxWidth='lg'>
         <Typography variant='h4' component='h2'>
           {title}
         </Typography>

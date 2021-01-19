@@ -96,9 +96,9 @@ const SingleProduct = ({
       <Backdrop className={classes.backdrop} open={loading}>
         <CircularProgress color='inherit' />
       </Backdrop>
-      <Container fixed>
+      <Container maxWidth='lg'>
         <Grid container justify='center' spacing={2}>
-          <Grid item sm={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <div>
               <Paper>
                 <img
@@ -115,7 +115,7 @@ const SingleProduct = ({
               justify='center'
             >
               {products?.images?.map((image) => (
-                <Grid item sm={2} key={image.id}>
+                <Grid item xs={3} md={2} key={image.id}>
                   <Paper onClick={() => setMainImage(image.src, image.altText)}>
                     <img
                       src={image.src}

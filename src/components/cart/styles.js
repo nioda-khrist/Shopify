@@ -28,4 +28,14 @@ export const cartStyles = makeStyles((theme) => ({
       borderRight: 'none',
     },
   },
+  qtyMobile: {
+    display: 'flex',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    '& h6': {
+      marginRight: theme.spacing(1.5),
+    },
+  },
 }));

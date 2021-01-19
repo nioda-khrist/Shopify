@@ -13,9 +13,18 @@ export const itemStyles = makeStyles((theme) => ({
     maxWidth: '100%',
     height: '220px',
     objectFit: 'cover',
+    [theme.breakpoints.down('sm')]: {
+      height: '175px',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '100px',
+    },
   },
   content: {
     padding: theme.spacing(2),
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(1),
+    },
   },
 }));
 

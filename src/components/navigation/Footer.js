@@ -14,7 +14,7 @@ const Footer = () => {
 
   return location.pathname === '/unauthorized' ? null : (
     <Box component='section' borderTop={1} py={2} borderColor='grey.300' mt={5}>
-      <Container fixed>
+      <Container maxWidth='lg'>
         <Grid container spacing={2}>
           <Grid item xs>
             <Typography variant='h6' style={{ marginBottom: '0.5em' }}>

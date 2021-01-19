@@ -3,6 +3,11 @@ import { makeStyles } from '@material-ui/core';
 export const cartStyles = makeStyles((theme) => ({
   root: {
     paddingTop: theme.spacing(5),
+    [theme.breakpoints.down('sm')]: {
+      '&>div': {
+        justifyContent: 'center',
+      },
+    },
   },
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
@@ -30,7 +35,15 @@ export const cartStyles = makeStyles((theme) => ({
   btnContainer: {
     display: 'flex',
     marginTop: theme.spacing(2),
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
+    [theme.breakpoints.down('xs')]: {
+      justifyContent: 'center',
+      '& a': {
+        marginTop: theme.spacing(1.5),
+        width: '100%',
+      },
+    },
   },
   policy: {
     marginTop: theme.spacing(4),

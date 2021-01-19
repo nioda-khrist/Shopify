@@ -1,4 +1,11 @@
-import { AppBar, Badge, Button, Container, Grid } from '@material-ui/core';
+import {
+  AppBar,
+  Badge,
+  Button,
+  Container,
+  Grid,
+  Hidden,
+} from '@material-ui/core';
 import React from 'react';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { headerStyles } from './styles';
@@ -18,9 +25,9 @@ const Header = ({ lineItems }) => {
       className={classes.root}
       elevation={0}
     >
-      <Container fixed>
+      <Container maxWidth='lg'>
         <Grid container justify='space-between'>
-          <Grid item sm={4}>
+          <Grid item xs={6} sm={4}>
             <Link to='/'>
               <img
                 src='/images/logo.png'
@@ -29,7 +36,7 @@ const Header = ({ lineItems }) => {
               />
             </Link>
           </Grid>
-          <Grid item sm={4} className={classes.actionContainer}>
+          <Grid item xs={6} sm={4} className={classes.actionContainer}>
             <div>
               <Badge
                 badgeContent={cartCount}
@@ -40,16 +47,18 @@ const Header = ({ lineItems }) => {
                 <ShoppingCartIcon />
               </Badge>
             </div>
-            <div>
-              <Button
-                variant='contained'
-                color='primary'
-                component={Link}
-                to='/products'
-              >
-                SHOP NOW!
-              </Button>
-            </div>
+            <Hidden only='xs'>
+              <div>
+                <Button
+                  variant='contained'
+                  color='primary'
+                  component={Link}
+                  to='/products'
+                >
+                  SHOP NOW!
+                </Button>
+              </div>
+            </Hidden>
           </Grid>
         </Grid>
       </Container>

@@ -39,7 +39,7 @@ const ProductComponent = () => {
   const classes = homeStyles();
 
   return (
-    <Container fixed className={classes.productRoot}>
+    <Container maxWidth='lg' className={classes.productRoot}>
       <div className={classes.productTitle}>
         <Typography variant='h5' component='h2'>
           Products

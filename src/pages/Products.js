@@ -8,7 +8,7 @@ const Products = () => {
   return (
     <React.Fragment>
       <PageTitle title='Products' />
-      <Container fixed className={classes.root}>
+      <Container maxWidth='lg' className={classes.root}>
         <Product limited={false} />
       </Container>
     </React.Fragment>

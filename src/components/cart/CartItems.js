@@ -1,5 +1,6 @@
 import {
   Button,
+  Hidden,
   IconButton,
   Table,
   TableBody,
@@ -18,7 +19,6 @@ import { increaseCart, decreaseCart, removeCartProduct } from '../../redux';
 
 const CartItems = ({
   variants,
-  loading,
   increaseCart,
   decreaseCart,
   removeCartProduct,
@@ -31,9 +31,11 @@ const CartItems = ({
         <TableHead>
           <TableRow>
             <TableCell>Product</TableCell>
-            <TableCell align='right'>Quantity</TableCell>
-            <TableCell align='right'>Price</TableCell>
-            <TableCell align='right'></TableCell>
+            <Hidden only='xs'>
+              <TableCell align='right'>Quantity</TableCell>
+              <TableCell align='right'>Price</TableCell>
+              <TableCell align='right'></TableCell>
+            </Hidden>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -56,36 +58,75 @@ const CartItems = ({
                     </Typography>
                   </div>
                 </div>
+                <Hidden smUp>
+                  <div className={classes.qtyMobile}>
+                    <Typography variant='subtitle2'>Quantity:</Typography>
+                    <div className={classes.productQty}>
+                      <IconButton
+                        aria-label='reduce quantity'
+                        size='small'
+                        onClick={() => decreaseCart(item.id, item.quantity)}
+                      >
+                        <RemoveIcon fontSize='inherit' />
+                      </IconButton>
+                      <span>{item.quantity}</span>
+                      <IconButton
+                        aria-label='reduce quantity'
+                        size='small'
+                        onClick={() => increaseCart(item.id, item.quantity)}
+                      >
+                        <AddIcon fontSize='inherit' />
+                      </IconButton>
+                    </div>
+                  </div>
+                  <div>
+                    <Typography variant='subtitle2' gutterBottom>
+                      Price: PHP {item.variant.price}
+                    </Typography>
+                  </div>
+                  <div>
+                    <Button
+                      variant='contained'
+                      color='primary'
+                      size='small'
+                      onClick={() => removeCartProduct(item.id, item.quantity)}
+                    >
+                      Remove
+                    </Button>
+                  </div>
+                </Hidden>
               </TableCell>
-              <TableCell align='center'>
-                <div className={classes.productQty}>
-                  <IconButton
-                    aria-label='reduce quantity'
-                    size='small'
-                    onClick={() => decreaseCart(item.id, item.quantity)}
+              <Hidden xsDown>
+                <TableCell align='center'>
+                  <div className={classes.productQty}>
+                    <IconButton
+                      aria-label='reduce quantity'
+                      size='small'
+                      onClick={() => decreaseCart(item.id, item.quantity)}
+                    >
+                      <RemoveIcon fontSize='inherit' />
+                    </IconButton>
+                    <span>{item.quantity}</span>
+                    <IconButton
+                      aria-label='reduce quantity'
+                      size='small'
+                      onClick={() => increaseCart(item.id, item.quantity)}
+                    >
+                      <AddIcon fontSize='inherit' />
+                    </IconButton>
+                  </div>
+                </TableCell>
+                <TableCell align='center'>PHP {item.variant.price}</TableCell>
+                <TableCell align='center'>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    onClick={() => removeCartProduct(item.id, item.quantity)}
                   >
-                    <RemoveIcon fontSize='inherit' />
-                  </IconButton>
-                  <span>{item.quantity}</span>
-                  <IconButton
-                    aria-label='reduce quantity'
-                    size='small'
-                    onClick={() => increaseCart(item.id, item.quantity)}
-                  >
-                    <AddIcon fontSize='inherit' />
-                  </IconButton>
-                </div>
-              </TableCell>
-              <TableCell align='center'>PHP {item.variant.price}</TableCell>
-              <TableCell align='center'>
-                <Button
-                  variant='contained'
-                  color='primary'
-                  onClick={() => removeCartProduct(item.id, item.quantity)}
-                >
-                  Remove
-                </Button>
-              </TableCell>
+                    Remove
+                  </Button>
+                </TableCell>
+              </Hidden>
             </TableRow>
           ))}
         </TableBody>
@@ -97,7 +138,6 @@ const CartItems = ({
 const mapStateToProps = (state) => {
   return {
     variants: state.addCart.cart.lineItems,
-    loading: state.addCart.loading,
   };
 };
 

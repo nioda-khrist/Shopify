@@ -21,14 +21,14 @@ const Cart = ({ cart, loading }) => {
   return (
     <React.Fragment>
       <PageTitle title='Shopping Cart' />
-      <Container fixed className={classes.root}>
+      <Container maxWidth='lg' className={classes.root}>
         <Backdrop className={classes.backdrop} open={loading}>
           <CircularProgress color='inherit' />
         </Backdrop>
         <Grid container justify='space-between'>
-          {cart.id ? (
+          {cart.lineItems.length ? (
             <React.Fragment>
-              <Grid item sm={8}>
+              <Grid item xs={12} md={8}>
                 <CartItems />
                 <div className={classes.btnContainer}>
                   <Button
@@ -53,7 +53,7 @@ const Cart = ({ cart, loading }) => {
                   </Button>
                 </div>
               </Grid>
-              <Grid item sm={3}>
+              <Grid item xs={12} sm={6} md={3}>
                 <div className={classes.priceContainer}>
                   <div className={classes.price}>
                     <div>
@@ -125,7 +125,7 @@ const Policy = () => {
 
   return (
     <div className={classes.policy}>
-      <Container fixed>
+      <Container maxWidth='lg'>
         <Typography variant='h6' component='h2' gutterBottom>
           Payment and refund policy
         </Typography>
