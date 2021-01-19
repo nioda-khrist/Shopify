@@ -1,4 +1,3 @@
-import { getFirebase } from 'react-redux-firebase';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -29,7 +28,7 @@ const persistedState = loadFromLocalStorage();
 const store = createStore(
   rootReducer,
   persistedState,
-  composeWithDevTools(applyMiddleware(thunk.withExtraArgument({ getFirebase })))
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 store.subscribe(() => saveToLocalStore(store.getState()));
