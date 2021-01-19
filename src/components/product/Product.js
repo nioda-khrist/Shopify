@@ -23,13 +23,10 @@ const Product = ({ fetchProduct, products, limited, error, loading }) => {
 
   const paginationHandler = (event, value) => {
     setPage(value);
-    console.log(value);
     setPagination({
       firstVal: 8 * (value - 1),
       secondVal: 8 * value,
     });
-    console.log(pagination.firstVal);
-    console.log(pagination.secondVal);
   };
 
   return (
