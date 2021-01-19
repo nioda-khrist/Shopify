@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { Link } from 'react-router-dom';
+import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
 
 const Cart = ({ cart, loading }) => {
   const classes = cartStyles();
@@ -25,62 +26,97 @@ const Cart = ({ cart, loading }) => {
           <CircularProgress color='inherit' />
         </Backdrop>
         <Grid container justify='space-between'>
-          <Grid item sm={8}>
-            <CartItems />
-            <div className={classes.btnContainer}>
-              <Button
-                variant='contained'
-                color='secondary'
-                startIcon={<ArrowBackIosIcon />}
-                component={Link}
-                to='/products'
-              >
-                Continue Shopping
-              </Button>
-              <Button
-                variant='contained'
-                color='primary'
-                endIcon={<ArrowForwardIosIcon />}
-                component={Link}
-                to={{ pathname: cart.webUrl }}
-                rel='noopener noreferrer'
-                target='_blank'
-              >
-                Make Purchase
-              </Button>
-            </div>
-          </Grid>
-          <Grid item sm={3}>
-            <div className={classes.priceContainer}>
-              <div className={classes.price}>
-                <div>
-                  <Typography variant='body2'>Sub Total:</Typography>
-                  <Typography variant='subtitle2'>
-                    {cart.currencyCode} {cart.totalPrice}
-                  </Typography>
+          {cart.id ? (
+            <React.Fragment>
+              <Grid item sm={8}>
+                <CartItems />
+                <div className={classes.btnContainer}>
+                  <Button
+                    variant='contained'
+                    color='secondary'
+                    startIcon={<ArrowBackIosIcon />}
+                    component={Link}
+                    to='/products'
+                  >
+                    Continue Shopping
+                  </Button>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    endIcon={<ArrowForwardIosIcon />}
+                    component={Link}
+                    to={{ pathname: cart.webUrl }}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
+                    Make Purchase
+                  </Button>
                 </div>
-                <div>
-                  <Typography variant='body2'>Tax:</Typography>
-                  <Typography variant='subtitle2'>
-                    {cart.currencyCode} {cart.totalTax}
-                  </Typography>
+              </Grid>
+              <Grid item sm={3}>
+                <div className={classes.priceContainer}>
+                  <div className={classes.price}>
+                    <div>
+                      <Typography variant='body2'>Sub Total:</Typography>
+                      <Typography variant='subtitle2'>
+                        {cart.currencyCode} {cart.totalPrice}
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography variant='body2'>Tax:</Typography>
+                      <Typography variant='subtitle2'>
+                        {cart.currencyCode} {cart.totalTax}
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography variant='body2'>Total Price:</Typography>
+                      <Typography variant='subtitle2'>
+                        {cart.currencyCode} {cart.totalPrice}
+                      </Typography>
+                    </div>
+                  </div>
+                  <div className={classes.payments}>
+                    <img
+                      src='/images/payment-gateway.png'
+                      alt='payment gateway'
+                    />
+                  </div>
                 </div>
-                <div>
-                  <Typography variant='body2'>Total Price:</Typography>
-                  <Typography variant='subtitle2'>
-                    {cart.currencyCode} {cart.totalPrice}
-                  </Typography>
-                </div>
-              </div>
-              <div className={classes.payments}>
-                <img src='/images/payment-gateway.png' alt='payment gateway' />
-              </div>
-            </div>
-          </Grid>
+              </Grid>
+            </React.Fragment>
+          ) : (
+            <NoCart />
+          )}
         </Grid>
       </Container>
       <Policy />
     </React.Fragment>
+  );
+};
+
+const NoCart = () => {
+  const classes = cartStyles();
+
+  return (
+    <Grid item sm={12} className={classes.emptyRoot}>
+      <div>
+        <RemoveShoppingCartIcon className={classes.icon} />
+        <Typography variant='h4' component='h2'>
+          CART IS EMPTY
+        </Typography>
+        <Typography variant='body2' component='p' gutterBottom>
+          Looks like you have no items in your shopping cart.
+        </Typography>
+        <Button
+          variant='contained'
+          color='primary'
+          component={Link}
+          to='/products'
+        >
+          SHOP NOW
+        </Button>
+      </div>
+    </Grid>
   );
 };
 

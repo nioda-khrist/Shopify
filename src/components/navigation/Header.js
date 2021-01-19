@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 const Header = ({ lineItems }) => {
   const classes = headerStyles();
-  const cartCount = lineItems.length ?? 0;
+  const cartCount = lineItems?.length ?? 0;
   let location = useLocation();
 
   return location.pathname === '/unauthorized' ? null : (

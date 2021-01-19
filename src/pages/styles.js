@@ -38,6 +38,18 @@ export const cartStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(5),
   },
+  emptyRoot: {
+    minHeight: '50vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '&>div': {
+      textAlign: 'center',
+    },
+  },
+  icon: {
+    fontSize: '10em',
+  },
 }));
 
 export const productStyles = makeStyles((theme) => ({
