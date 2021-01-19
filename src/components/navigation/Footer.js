@@ -22,16 +22,16 @@ const Footer = () => {
             </Typography>
             <ul className={`footer-link ${classes.navList}`}>
               <li>
-                <Link to='/'>Adidas</Link>
+                <Link to='/#'>Adidas</Link>
               </li>
               <li>
-                <Link to='/'>Puma</Link>
+                <Link to='/#'>Puma</Link>
               </li>
               <li>
-                <Link to='/'>Reebok</Link>
+                <Link to='/#'>Reebok</Link>
               </li>
               <li>
-                <Link to='/'>Nike</Link>
+                <Link to='/#'>Nike</Link>
               </li>
             </ul>
           </Grid>
@@ -41,16 +41,16 @@ const Footer = () => {
             </Typography>
             <ul className={`footer-link ${classes.navList}`}>
               <li>
-                <Link to='/'>About us</Link>
+                <Link to='/#'>About us</Link>
               </li>
               <li>
-                <Link to='/'>Career</Link>
+                <Link to='/#'>Career</Link>
               </li>
               <li>
-                <Link to='/'>Find a store</Link>
+                <Link to='/#'>Find a store</Link>
               </li>
               <li>
-                <Link to='/'>Rules and terms</Link>
+                <Link to='/#'>Rules and terms</Link>
               </li>
               <li>
                 <Link to='/'>Sitemap</Link>
@@ -63,19 +63,19 @@ const Footer = () => {
             </Typography>
             <ul className={`footer-link ${classes.navList}`}>
               <li>
-                <Link to='/'>Contact us</Link>
+                <Link to='/#'>Contact us</Link>
               </li>
               <li>
-                <Link to='/'>Money refund</Link>
+                <Link to='/#'>Money refund</Link>
               </li>
               <li>
-                <Link to='/'>Order status</Link>
+                <Link to='/#'>Order status</Link>
               </li>
               <li>
-                <Link to='/'>Shipping info</Link>
+                <Link to='/#'>Shipping info</Link>
               </li>
               <li>
-                <Link to='/'>Open dispute</Link>
+                <Link to='/#'>Open dispute</Link>
               </li>
             </ul>
           </Grid>
@@ -85,16 +85,16 @@ const Footer = () => {
             </Typography>
             <ul className={`footer-link ${classes.navList}`}>
               <li>
-                <Link to='/'>User Login</Link>
+                <Link to='/#'>User Login</Link>
               </li>
               <li>
-                <Link to='/'>User register</Link>
+                <Link to='/#'>User register</Link>
               </li>
               <li>
-                <Link to='/'>Account Setting</Link>
+                <Link to='/#'>Account Setting</Link>
               </li>
               <li>
-                <Link to='/'>My Orders</Link>
+                <Link to='/#'>My Orders</Link>
               </li>
             </ul>
           </Grid>
@@ -117,7 +117,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to='/'>
+                <Link
+                  to={{ pathname: 'http://www.twitter.com' }}
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
                   <TwitterIcon
                     fontSize='small'
                     style={{ marginRight: '4px' }}
@@ -126,7 +130,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to='/'>
+                <Link
+                  to={{ pathname: 'http://www.instagram.com' }}
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
                   <InstagramIcon
                     fontSize='small'
                     style={{ marginRight: '4px' }}
@@ -135,7 +143,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to='/'>
+                <Link
+                  to={{ pathname: 'http://www.youtube.com' }}
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
                   <YouTubeIcon
                     fontSize='small'
                     style={{ marginRight: '4px' }}
