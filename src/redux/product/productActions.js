@@ -7,7 +7,7 @@ import Client from 'shopify-buy';
 
 const client = Client.buildClient({
   domain: 'joukan.myshopify.com',
-  storefrontAccessToken: process.env.REACT_APP_SHOPIFY_KEY,
+  storefrontAccessToken: '5d5798fdbb7be3538a41b9850aba5ad2',
 });
 
 export const fetchProductLoading = () => {
