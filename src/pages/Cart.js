@@ -26,7 +26,7 @@ const Cart = ({ cart, loading }) => {
           <CircularProgress color='inherit' />
         </Backdrop>
         <Grid container justify='space-between'>
-          {cart.lineItems.length ? (
+          {cart?.lineItems?.length ? (
             <React.Fragment>
               <Grid item xs={12} md={8}>
                 <CartItems />
