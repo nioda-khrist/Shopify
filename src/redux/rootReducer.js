@@ -1,12 +1,14 @@
-import { firebaseReducer } from 'react-redux-firebase';
 import { combineReducers } from 'redux';
-import { firestoreReducer } from 'redux-firestore';
-import userReducer from './user/userReducer';
+import productReducer from './product/productReducer';
+import singleProductReducer from './singleProduct/singleProductReducer';
+import { addCartReducer } from './cart/cartReducer';
+import alertReducer from './alert/alertReducer';
 
 const rootReducer = combineReducers({
-  firebase: firebaseReducer,
-  firestore: firestoreReducer,
-  user: userReducer,
+  product: productReducer,
+  singleProduct: singleProductReducer,
+  addCart: addCartReducer,
+  alert: alertReducer,
 });
 
 export default rootReducer;
